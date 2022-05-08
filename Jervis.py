@@ -16,7 +16,6 @@ from secret import passw
 
 
 engine = pyttsx3.init()
-wolframalpha_app_id = '9E2L4P-QRVY6XRL5Y'
 
 
 def speak(audio):
@@ -80,14 +79,14 @@ def sendEmail(to, content):
     server = smtplib.SMTP('smtp.gmail.com', 587)
     server.ehlo()
     server.starttls()
-    server.login('yoseftoovian@gmail.com', passw)
-    server.sendmail('yoseftoovian@gmail.com', to, content)
+    server.login('your mail address here...', passw)
+    server.sendmail('your mail address here...', to, content)
     server.close()
 
 
 def screenshot():
     img = pyautogui.screenshot()
-    img.save('C:/Users/yosef/Desktop/Test Jervis/screenshot.png')
+    img.save('path where you want to store the screenshot')
 
 
 def cpu():
@@ -130,7 +129,7 @@ if __name__ == "__main__":
                 speak("Who is the Receiver?")
                 # receiver = input("Enter Receiver's Email :")
 
-                receiver = 'yoseftoovian2@gmial.com'
+                receiver = 'the receiver mail'
                 toEmail = receiver
                 sendEmail(toEmail, mailContent)
                 speak(mailContent)
@@ -142,7 +141,7 @@ if __name__ == "__main__":
 
         elif 'website' in query:
             speak('What should I search?')
-            chromepath = 'C:/Program Files (x86)/Google/Chrome/Application/chrome.exe %s'
+            chromepath = 'put here a path to your chrome.exe'
 
             search = takeCommand().lower()
             wb.get(chromepath).open_new_tab(search + '.com')
@@ -170,7 +169,7 @@ if __name__ == "__main__":
 
         elif 'word' in query or 'world' in query or 'wallet' in query:
             speak("Opening MS word...")
-            ms_word = r'C:/Program Files/Microsoft Office/Office16/WINWORD.EXE'
+            ms_word = r'path to your WINWORD.EXE here'
             os.startfile(ms_word)
 
         elif 'write note' in query:
@@ -208,7 +207,7 @@ if __name__ == "__main__":
             # no = int(ans.replace('number', ''))
             # os.startfile(os.path.join(songs_dir + music[no]))
 
-            spotify_path = 'C:/Users/yosef/AppData/Roaming/Spotify/Spotify.exe'
+            spotify_path = 'path to your Spotify.exe here '
             speak('opening Spotify')
             os.system(spotify_path)
 
@@ -246,15 +245,6 @@ if __name__ == "__main__":
 
             except Exception as e:
                 print(str(e))
-
-        # elif 'calculate' in query:
-        #     client = wolframalpha.Client(wolframalpha_app_id)
-        #     index = query.lower().split().index('calculate')
-        #     query = query.split()[index + 1:]
-        #     res = client.query(''.join(query))
-        #     answer = next(res.result).text
-        #     print('The answer is ' + answer)
-        #     speak('The answer is ' + answer)
 
         elif 'what is' in query or 'who is' in query:
             client = wolframalpha.Client(wolframalpha_app_id)
